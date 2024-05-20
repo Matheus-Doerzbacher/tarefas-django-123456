@@ -13,8 +13,14 @@
 <div class="container">
   {% for tarefa in tarefas %}
   <div class="container-tarefa">
-    <h5>{{tarefa.titulo}}</h5>
-    <p>{{tarefa.descricao}}</p>
+    <div class="tarefa-content">
+      <h5>{{tarefa.titulo}}</h5>
+      <p>{{tarefa.descricao}}</p>
+    </div>
+    <form action="{% url 'excluir' tarefa.id %}" method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Excluir</button>
+    </form>
   </div>
   <br />
   {% endfor %}
